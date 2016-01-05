@@ -7,6 +7,8 @@ Switches cases of alphabet characters.
 
 '''
 
+import sys
+
 def mM(FILE): #converts m's
     out = ''
     
@@ -36,3 +38,18 @@ def azAZ(FILE): #converts all alphabet characters
     f = open(FILE+'.cnv', 'w')
     f.write(out)
     f.close()
+    
+def usage(): #prints out usage
+    print("Usage: caseConvert.py filename operation\n\toperation: m/azAZ")
+    sys.exit(0)
+
+if __name__ == '__main__':
+    if len(sys.argv) != 3:
+        usage()
+    else:
+        if sys.argv[2] == "m":
+            mM(sys.argv[1])
+        elif sys.argv[2] == "az":
+            azAZ(sys.argv[1])
+        else:
+            usage()
